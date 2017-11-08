@@ -33,6 +33,9 @@ Demo page see [http://robinherbots.github.io/Inputmask](http://robinherbots.gith
 
 [![donate](https://www.paypalobjects.com/en_US/i/btn/btn_donate_SM.gif)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=ZNR3EB6JTMMSS)
 
+
+Thanks to [Jetbrains](https://www.jetbrains.com/) for providing a free license for their excellent Webstorm IDE.
+
 ## Setup
 ### dependencyLibs
 Inputmask can run against different javascript libraries.  
@@ -140,6 +143,9 @@ im.mask(selector);
 Inputmask({"mask": "(999) 999-9999", .... other options .....}).mask(selector);
 Inputmask("9-a{1,3}9{1,3}").mask(selector);
 Inputmask("9", { repeat: 10 }).mask(selector);
+  
+Inputmask({ regex: "\\d*" }).mask(selector);
+Inputmask({ regex: String.raw`\d*` }).mask(selector);
 ```
 
 ### via jquery plugin
@@ -713,6 +719,24 @@ See **escape special mask chars**
 ### mask
 The mask to use.
 
+```
+Inputmask({ mask: "9{*}").mask(selector);
+```
+
+### regex
+Use a regular expression as a mask
+
+```
+Inputmask({ regex: "[0-9]*" }).mask(selector);
+```
+
+When using shorthands be aware that you need to double escape or use String.raw with a string literal.
+```
+Inputmask({ regex: "\\d*" }).mask(selector);
+~  
+Inputmask({ regex: String.raw`\d*` }).mask(selector);
+```
+
 ### oncomplete
 Execute a function when the mask is completed
 
@@ -1066,6 +1090,18 @@ You can override the Inputmask.prototype.positionColorMask`if you need some cust
                 template.zIndex = input.zIndex - 1;
            }
 ```
+ 
+### disablePredictiveText
+Default: false  
+Disables predictive text on mobile devices.  
+
+What it does.
+- changes the input type to password => disables predictive text
+- enables the colorMask option which creates a div, which surrounds the input.  
+So we type in the hidden password input and render the mask in the a created div.
+
+To use the colorMask, you need to include the inputmask.css you might need to add some css-tweaks to make it all visually correct in your page.
+
  
 ### importDataAttributes
 Specify to use the data-inputmask attributes or to ignore them.

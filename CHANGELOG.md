@@ -2,13 +2,32 @@
 All notable changes to this project will be documented in this file.
 
 ## [UNRELEASED - 4.x]
-### Updates
-- drop Regex alias
-- TODO drop all date/time related aliases
-- TODO rewrite datatime alias
-
-## [UNRELEASED - 3.3.8]
 ### added
+- new datetime alias (WIP)
+
+### Updates
+- fix in determineTestTemplate.  Impacts alternations.
+- rename androidHack option to disablePredictiveText. Make it available for other platforms.
+- drop Regex alias
+- drop all date/time related aliases
+- enhance inputfallback (Android)
+
+### Fixed
+- problem with two separate alternaions #1722
+- colorMask + Remask = Duplicate im-colormask element #1709
+
+## [3.3.9 - 2017-10-10]
+### Updates
+- enhance inputfallback (Android)
+
+### Fixes
+- On Android with date mask input mashing up #1708
+- Currency mask works incorrectly on Android Chrome v58 #1617
+- Can't input character at the end if it's also a placeholder on Android #1648
+
+## [3.3.8 - 2017-08-24]
+### added
+- added \uFF11-\uFF19 character range to 9 definition #1606
 - importDataAttributes option #1633
 - add dot support in regex #1651
 
